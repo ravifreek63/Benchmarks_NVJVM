@@ -1,4 +1,7 @@
 #!/bin/bash
+#This is for running the SearchTests
+
+#Arguments
 #The first argument is the size of min size of the heap, the second argument is the maximum size of the heap
 
 
