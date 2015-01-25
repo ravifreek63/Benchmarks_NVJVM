@@ -10,10 +10,11 @@ fanout="16"
 numberThreads="9"
 numberSamplesPerThread="1000"
 percentageCacheHit="100"
-runningTime="250" #in_seconds
+runningTime="30" #in_seconds
 getsPerPut="20"
 numberCollections="1"
-cacheParameters="$numberKeys $fanout $numberThreads $numberSamplesPerThread $percentageCacheHit $runningTime $getsPerPut"
+collectorType="$1"
+cacheParameters="$numberKeys $fanout $numberThreads $numberSamplesPerThread $percentageCacheHit $runningTime $getsPerPut $collectorType"
 gcOptions="-XX:-PrintGC -XX:+UseConcMarkSweepGC -XX:-PrintGCDetails -Xms30g -XX:NewRatio=300 -XX:NumberCollections=$numberCollections"
 nConcThreads=""
 
@@ -35,4 +36,5 @@ esac
 cd $baseDir
 cmd="$javaPath $gcOptions $extraOptions -jar $jarFile $cacheParameters"
 echo $cmd
+echo 3 > /proc/sys/vm/drop_caches
 $cmd

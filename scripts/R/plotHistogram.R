@@ -1,0 +1,5 @@
+mydata_baseline = read.table("/home/tandon/latency_baseline.txt")
+mydata_cagc = read.table("/home/tandon/latency_cagc.txt")
+library(ggplot2)
+plot=qplot(V1, data=mydata_baseline, geom="density", color='grey', xlim=c(0, 1500), xlab='Latency (in nanoseconds)')+ geom_density(aes(V1), data=mydata_cagc, color='blue')
+ggsave(plot, file="/home/tandon/plots/plot_combine.pdf")
